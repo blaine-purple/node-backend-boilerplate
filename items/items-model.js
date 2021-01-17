@@ -13,7 +13,9 @@ function find() {
 }
 
 function findById(id) {
-  return db('items').where('id', id).first()
+  let item = db('items').where('id', id).first()
+  console.log(item)
+  return item
 }
 
 function add(item) {
