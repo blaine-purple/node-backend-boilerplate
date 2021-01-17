@@ -52,7 +52,7 @@ router.post('/', validatePostReqBody, (req, res) => {
       res.status(201).json({ message: 'Successfully added the item.', item})
     })
     .catch(err => {
-      res.status(500).json({ message: 'Error adding the item.' })
+      res.status(500).json({ message: 'Error adding the item.', error: err })
     })
 })
 
