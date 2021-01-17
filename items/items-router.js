@@ -46,6 +46,7 @@ router.post('/', validatePostReqBody, (req, res) => {
   Items.add(item)
     .then(id => {
       [newItemId] = id
+      console.log("new item id", newItemId)
       return Items.findById(newItemId)
     })
     .then(item => {
