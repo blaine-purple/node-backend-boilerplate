@@ -6,13 +6,26 @@ exports.up = function(knex) {
       items
         .string('name', 255)
         .notNullable()
-        .unique();
       items
-        .text('description').notNullable();
+        .string('link');
       items
-        .string('category').notNullable();
+        .text('description')
+        .notNullable();
       items
-        .text('image');
+        .boolean('food')
+        .notNullable();
+      items
+        .boolean('used')
+        .notNullable()
+        .defaultTo(false);
+      items
+        .boolean('useAgain')
+        .notNullable()
+        .defaultTo(true);
+      items
+        .integer('rating');
+      items
+        .integer('price');
       items
         .timestamps(); // will create two columns: created_at, updated_at
     })
