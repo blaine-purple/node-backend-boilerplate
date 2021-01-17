@@ -45,7 +45,12 @@ router.post('/', validatePostReqBody, (req, res) => {
   const item = req.body
   Items.add(item)
     .then(id => {
-      console.log(id)
+      console.log("this is id",id)
+      console.log("getTypeParser", id.getTypeParser)
+      console.log("setTypeParser", id.setTypeParser)
+      console.log("arrayParser", id.arrayParser)
+      console.log("builtins", id.builtins)
+
       return Items.findById(id)
     })
     .then(item => {
