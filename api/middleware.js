@@ -24,15 +24,11 @@ function validateItemId(req, res, next) {
 function validatePostReqBody(req, res, next) {
   if (req.body.name) {
     if (req.body.description) {
-      if (req.body.category) {
         next()
       } else {
-        res.status(404).json({ message: 'Category field is required.'})
+        res.status(404).json({ message: 'Description field is required.'})
       }
     } else {
-      res.status(404).json({ message: 'Description field is required.'})
+      res.status(404).json({ message: 'Name field is required.'})
     }
-  } else {
-    res.status(404).json({ message: 'Name field is required.'})
   }
-}

@@ -5,9 +5,22 @@ const {
   validatePostReqBody
 } = require('../api/middleware.js')
 
+const random = require("../helperFunctions/returnRandom")
+
 router.get('/', (req, res) => {
   Items.find()
     .then(items => {
+      res.status(200).json(items)
+    })
+    .catch(err => {
+      res.status(500).json({message: 'Error retrieving the items.'})
+      console.log(err)
+    })
+})
+router.get('/weekly', (req, res) => {
+  Items.find()
+    .then(items => {
+      items = random.randomThree(items)
       res.status(200).json(items)
     })
     .catch(err => {
@@ -57,6 +70,7 @@ router.put('/:id', validateItemId, (req, res) => {
       res.status(500).json({ message: 'Error updating the item.' })
     })
 })
+
 
 router.delete('/:id', validateItemId, (req, res) => {
   const id = req.params.id
