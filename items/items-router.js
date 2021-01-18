@@ -45,13 +45,9 @@ router.post('/', validatePostReqBody, (req, res) => {
   const item = req.body
   Items.add(item)
     .then(id => {
-      console.log("this is id",id)
-      console.log("getTypeParser", id.getTypeParser)
-      console.log("setTypeParser", id.setTypeParser)
-      console.log("arrayParser", id.arrayParser)
-      console.log("builtins", id.builtins)
-
-      return Items.findById(id)
+      [newItemId] = id
+      console.log("this is id************",id)
+      return Items.findById(newItemId)
     })
     .then(item => {
       res.status(201).json({ message: 'Successfully added the item.', item})
