@@ -1,3 +1,5 @@
+const Items = require('../items/items-model');
+
 module.exports = {
     randomThree
   }
@@ -8,9 +10,9 @@ function randomThree(arr) {
     for(const item in arr) {
         if (arr[item].useAgain) {
             if (arr[item].food) {
-                food.push(arr[item])
+                food.push(arr[item].id)
             } else {
-                activ.push(arr[item])
+                activ.push(arr[item].id)
             }
         }
     }
@@ -34,7 +36,8 @@ function randomThree(arr) {
             activNums.push(num)
         }
     }
-    return {"food":[food[foodNums[0]], food[foodNums[1]], food[foodNums[2]]], "activ":[activ[activNums[0]], activ[activNums[1]], activ[activNums[2]]]}
+    return [food[foodNums[0]], food[foodNums[1]], food[foodNums[2]], activ[activNums[0]], activ[activNums[1]], activ[activNums[2]]]
+
 }
 
 

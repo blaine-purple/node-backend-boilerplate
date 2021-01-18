@@ -19,6 +19,10 @@ exports.up = function(knex) {
         .notNullable()
         .defaultTo(false);
       items
+        .boolean('weekly')
+        .notNullable()
+        .defaultTo(false);
+      items
         .boolean('useAgain')
         .notNullable()
         .defaultTo(true);

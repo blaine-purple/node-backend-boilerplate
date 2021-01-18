@@ -3,6 +3,8 @@ const db = require('../database/db-config.js');
 module.exports = {
   find,
   findById,
+  resetWeekly,
+  updateWeekly,
   add,
   edit,
   remove
@@ -26,4 +28,13 @@ function edit(id, item) {
 
 function remove(id) {
   return db('items').del().where('id', id)
+}
+
+
+function resetWeekly() {
+  return db('items').where({ weekly: true }).update({ weekly: false })
+}
+
+function updateWeekly(ids) {
+  return db("items").whereIn('id', ids).update({ weekly: true })
 }
